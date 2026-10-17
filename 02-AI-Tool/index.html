@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Text Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>AI Text Assistant</h1>
+    <p class="app-tagline">Summarize, rewrite, or simplify any text.</p>
+  </header>
+
+  <main class="app-main">
+    <!-- Action Selection -->
+    <section class="action-section" aria-labelledby="action-title">
+      <h2 id="action-title" class="visually-hidden">Choose an Action</h2>
+      <div class="action-tabs" role="tablist" aria-label="AI actions">
+        <button
+          role="tab"
+          id="action-summarize"
+          class="action-tab"
+          aria-selected="false"
+          aria-controls="input-text"
+          data-action="summarize"
+        >
+          Summarize
+        </button>
+        <button
+          role="tab"
+          id="action-rewrite"
+          class="action-tab"
+          aria-selected="false"
+          aria-controls="input-text"
+          data-action="rewrite"
+        >
+          Rewrite Professionally
+        </button>
+        <button
+          role="tab"
+          id="action-explain"
+          class="action-tab"
+          aria-selected="false"
+          aria-controls="input-text"
+          data-action="explain"
+        >
+          Explain Simply
+        </button>
+      </div>
+
+      <!-- Selected action indicator -->
+      <p class="selected-action" aria-live="polite">
+        Selected action: <strong id="selected-action-label">None</strong>
+      </p>
+    </section>
+
+    <!-- Text Input -->
+    <section class="input-section" aria-labelledby="input-heading">
+      <h2 id="input-heading" class="visually-hidden">Enter Your Text</h2>
+      <div class="form-group">
+        <label for="input-text">Your text</label>
+        <textarea
+          id="input-text"
+          name="inputText"
+          rows="8"
+          maxlength="5000"
+          placeholder="Paste or type the text you want the assistant to work on..."
+        ></textarea>
+        <div class="input-meta">
+          <span id="input-error" class="error-message" aria-live="polite"></span>
+          <span id="char-counter" class="char-counter">0 / 5000</span>
+        </div>
+      </div>
+
+      <button type="button" id="run-action-btn" class="btn btn-primary">
+        Run Action
+      </button>
+    </section>
+
+    <!-- Result Area -->
+    <section class="result-section" aria-labelledby="result-heading">
+      <h2 id="result-heading" class="section-title">Result</h2>
+
+      <!-- Empty state shown before any run -->
+      <div id="result-empty" class="empty-state">
+        <p id="result-empty-message">Choose an action and add some text, then click "Run Action" to see the result here.</p>
+      </div>
+
+      <!-- Result output (populated by JavaScript) -->
+      <div id="result-output" class="result-output hidden" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Built as part of AI-Product-Lab — <a href="../README.md">Project 2</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
