@@ -232,6 +232,14 @@ function setLoading(loading) {
   runActionBtn.disabled = loading;
   runActionBtn.textContent = loading ? 'Working…' : 'Run Action';
   runActionBtn.setAttribute('aria-busy', loading ? 'true' : 'false');
+
+  // Lock the action tabs while a request is in flight. The chosen action is
+  // already captured, so this is purely for a consistent UI: the selector can
+  // never disagree with the result being shown. Using the native `disabled`
+  // attribute also stops clicks and announces the state to screen readers.
+  actionTabs.forEach((tab) => {
+    tab.disabled = loading;
+  });
 }
 
 // ========================================
